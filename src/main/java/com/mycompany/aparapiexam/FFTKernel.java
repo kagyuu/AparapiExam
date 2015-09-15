@@ -92,6 +92,10 @@ public class FFTKernel extends Kernel {
         buttIK = ArrayUtils.toPrimitive(buttIKArray.toArray(new Integer[0]));
         buttSin = ArrayUtils.toPrimitive(buttSinArray.toArray(new Float[0]));
         buttCos = ArrayUtils.toPrimitive(buttCosArray.toArray(new Float[0]));
+        
+//        for(int i = 0; i < buttI.length; i++) {
+//            System.out.println(String.format("%d %d %d %f %f", i, buttI[i], buttIK[i], buttSin[i], buttCos[i]));
+//        }
     }
 
     @Override
@@ -133,8 +137,8 @@ public class FFTKernel extends Kernel {
         for (int cnt = 0; cnt < n; cnt++) {
             this.real[cnt] = x[cnt];
             this.imag[cnt] = y[cnt];
-            this.sign = sign;
         }
+        this.sign = sign;
         
         // ビット反転
         for (int i = 0; i < n; i++) {
@@ -169,7 +173,8 @@ public class FFTKernel extends Kernel {
     public float[] getSin() {
         float[] sin = new float[n/2];
         
-        for (int cnt = 0; cnt < sin.length; cnt++) {
+        sin[0] = imag[0] / n; // this must be zero.
+        for (int cnt = 1; cnt < sin.length; cnt++) {
             sin[cnt] = -2.0f * imag[cnt] / n;
         }
         
@@ -179,7 +184,8 @@ public class FFTKernel extends Kernel {
     public float[] getCos() {
         float[] cos = new float[n/2];
         
-        for (int cnt = 0; cnt < cos.length; cnt++) {
+        cos[0] = real[0] / n;
+        for (int cnt = 1; cnt < cos.length; cnt++) {
             cos[cnt] = 2.0f * real[cnt] / n;
         }
         

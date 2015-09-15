@@ -16,12 +16,14 @@ public class FFTKernelTest {
         
         for (int cnt = 0; cnt < size; cnt++) {
             real[cnt] = (float) (
-                1.0 * Math.sin(2 * Math.PI * cnt / size)
-                + 2.0 * Math.cos(2 * Math.PI * cnt / size)
-                + 3.0 * Math.sin(4 * Math.PI * cnt / size)
-                + 4.0 * Math.cos(4 * Math.PI * cnt / size)
-                + 5.0 * Math.sin(6 * Math.PI * cnt / size)
-                + 6.0 * Math.cos(6 * Math.PI * cnt / size)
+                1.0 * Math.sin(0 * Math.PI * cnt / size)
+                + 2.0 * Math.cos(0 * Math.PI * cnt / size)
+                + 3.0 * Math.sin(2 * Math.PI * cnt / size)
+                + 4.0 * Math.cos(2 * Math.PI * cnt / size)
+                + 5.0 * Math.sin(4 * Math.PI * cnt / size)
+                + 6.0 * Math.cos(4 * Math.PI * cnt / size)
+                + 7.0 * Math.sin(6 * Math.PI * cnt / size)
+                + 8.0 * Math.cos(6 * Math.PI * cnt / size)
             );
 
             imag[cnt] = 0.0f;
